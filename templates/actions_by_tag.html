@@ -1,0 +1,35 @@
+{% extends "navbar.html" %}
+
+{% block main %}
+    <div class="container">
+      <div class="jumbotron">
+          <h1>Actions</h1>
+
+          {% if actions %}
+              <!--<p class="lead">Actions:</p>-->
+              <table class="table table-hover table-condensed table-bordered">
+              <tr><th>Title</th><th>Date</th><th>Tags</th></tr>
+                  {% for a in actions %}
+                  <tr><td><a href="/actions/{{ a.id }}">{{ a.title }}</a></td>
+                          <td>{{ a.time }}</td>
+                          <td>{{ a.get_tag_count() }}</td></tr>
+                  {% endfor %}
+              </table>
+          {% else %}
+              There are currently no actions in the database with this tag.
+          {% endif %}
+
+          <!--<h2>Add Directory</h2>-->
+
+          <!--{% if result %}-->
+          <!--<p>{{ result }}</p>-->
+          <!--{% endif %}-->
+
+        <!--<p class="lead">Add a new directory to the database.</p>-->
+          <!--<form method="post">-->
+              <!--Directory: <input type="text" name="directory_name">-->
+              <!--<input type="submit" value="Submit">-->
+          <!--</form>-->
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "navbar.html" %}
+
+{% block main %}
+    <div class="container">
+      <div class="jumbotron">
+      {%  if url %}
+      <img src="{{ url }}">
+      {% else %}
+      <p>Not found.</p>
+      {% endif %}
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "navbar.html" %}
+
+{% block main %}
+    <div class="container">
+      <div class="jumbotron">
+          <h1>Duplicate Action</h1>
+
+          {% if result %}
+            {% if new_action_id %}
+            <p><a href="/actions/{{ new_action_id }}">{{ result }}</a></p>
+            {% else %}
+            <p>{{ result }}</p>
+            {% endif %}
+          {% endif %}
+
+        <p class="lead">Duplicate an action in the database:</p>
+          <datalist id="action-titles">
+              {% if action_titles %}
+                {% for at in action_titles %}
+                  <option value="{{ at }}">
+                {% endfor %}
+              {% endif %}
+          </datalist>
+          <datalist id="event-dates">
+              {% if event_dates %}
+                {% for ed in event_dates %}
+                  <option value="{{ ed }}">
+                {% endfor %}
+              {% endif %}
+          </datalist>
+          <form method="post">
+              <table class="table table-hover table-condensed table-bordered">
+                  <tr><td>Title</td> <td><input type="text" name="title" list="action-titles"></td></tr>
+                  <tr><td>Time</td> <td><input type="text" name="time" list="event-dates"></td></tr>
+                  <tr><td><input type="submit" value="Submit"></td></tr>
+              </table>
+          </form>
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,5 @@
+Query to get all tag types and tag values with counts of events:
+
+'SELECT tag.type AS tag_type, tag.value AS tag_value, count(event.id) as count FROM tag JOIN eventtag ON tag.id = eventtag.tag_id JOIN event ON event.id = eventtag.event_id GROUP BY tag.type, tag.value'
+
+'SELECT tag.value AS tag_value, count(event.id) as count FROM tag JOIN eventtag ON tag.id = eventtag.tag_id JOIN event ON event.id = eventtag.event_id WHERE tag.value = 'Location' GROUP BY tag.type'
